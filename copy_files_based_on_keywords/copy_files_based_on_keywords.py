@@ -11,12 +11,13 @@ Created on Tue Apr 30 10:33:28 2019
 中的重命文件会被overwritten
 
 使用示例：
-python check_filename.py ~/NaoJiYe/ ~/NaoJiYe/scRNA_data_all ~/NaoJiYe/keyword.csv 
+python check_filename.py ~/NaoJiYe/ ~/NaoJiYe/scRNA_data_all ~/NaoJiYe/keyword.csv 20181008_CSF_1
 
 参数说明：
 第一个参数为工作路径
 第二个参数为你想要遍历寻找的目标文件夹
 第三个参数为keyword.csv所在的全路径
+第四个参数为用来装输出文件的文件夹名
 
 keyword.csv：
 表头输入name
@@ -29,10 +30,10 @@ import shutil
 datapath=sys.argv[1]
 os.chdir(datapath)
 datapath=datapath.strip().rstrip("\\") ## 去除首位空格和尾部 \ 符号
-filtered_files=str(datapath+'filtered_files/')
+filtered_files=str(datapath+'/'+sys.argv[4])
 if not os.path.exists(filtered_files):
     print(datapath," does not exist, mkdir now.")
-    os.mkdirs(datapath)
+    os.mkdir(filtered_files)
 file_path=sys.argv[2]  #目标搜索的文件路径
 filename_path=sys.argv[3]  #关键字csv所在位置
 
