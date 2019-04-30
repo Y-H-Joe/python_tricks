@@ -33,7 +33,7 @@ datapath=datapath.strip().rstrip("\\") ## 去除首位空格和尾部 \ 符号
 filtered_files=str(datapath+'/'+sys.argv[4])
 if not os.path.exists(filtered_files):
     print(datapath," does not exist, mkdir now.")
-    os.mkdir(filtered_files)
+    os.makedirs(filtered_files)
 file_path=sys.argv[2]  #目标搜索的文件路径
 filename_path=sys.argv[3]  #关键字csv所在位置
 
